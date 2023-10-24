@@ -59,4 +59,15 @@
       font-size: 16px !important;
       color: #999999;
     }
+    
+    /* REMOVE UNNECESSARY ELEMENTS */
+    .socials-header {
+      display: none !important;
+    }
+    
+    footer, .footer {
+      display: none !important;   
+    }
+    /* --------------------------- */
+    
     }
