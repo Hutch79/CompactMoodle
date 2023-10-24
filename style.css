@@ -5,67 +5,81 @@
 @author         Hutch79 (https://github.com/Hutch79)
 @homepageURL    https://github.com/Hutch79/CompactMoodle
 @supportURL     https://github.com/Hutch79/CompactMoodle/issues
-@version        1.3
+@version        1.4
 @preprocessor   stylus
 @license        GPLv3
+
+@var select titles                "TITLE" ["Enabled", "Disabled"]
+@var checkbox smallTitles         "  💬 small Title Text" 1
+@var checkbox changeTitleColor    "  🟧 change Title color" 1
+
+@var select remItems              "UNNECESSARY ELEMENTS" ["Enabled", "Disabled"]
+@var checkbox socialHeader        "  📗 show social Header" 0
+@var checkbox showFooter          "  🪪 Show Footer" 0
+
+@var select icons                 "ICONS" ["Enabled", "Disabled"]
+@var checkbox smallerIcons        "  📗 small Icons" 1
+
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://moodle.bbbaden.ch/course/view.php") {
-  .activityiconcontainer {
-    height: 30px !important;
-    width: 30px !important;
-  }
-  .activity-item {
-    margin-top: -20px;
-    margin-bottom: -10px !important;
-  }
-
-  .activityicon {
-    height: 20px !important;
-    width: 20px !important;
-  }
-  
-/* ICONS NEW SIZE */
-  .activityicon {
-    height: 20px !important;
-    width: 20px !important;
-  }
-
-/* [BOOST THEME] SET ACTIVITY BOX PADDING */
-  .activity-item:not(.activityinline) {
-    border: 0px solid #dee2e6;
-    padding: 1rem;
-  }
-  .section .activity.indented + .indented .activity-item {
-    border-top: 0px solid #dee2e6;
-    border-radius: unset;
-  }
+    if(icons == "Enabled" && smallerIcons) {
+    
+        /* ICONS NEW SIZE */
+        .activityicon {
+            height: 20px !important;
+            width: 20px !important;
+        }
+        .activityiconcontainer {
+            height: 30px !important;
+            width: 30px !important;
+        }
+        .activity-item {
+            margin-top: -20px;
+            margin-bottom: -10px !important;
+        }
+    
+    
+    
+    /* [BOOST THEME] SET ACTIVITY BOX PADDING */
+        .activity-item:not(.activityinline) {
+            border: 0px solid #dee2e6;
+            padding: 1rem;
+        }
+        .section .activity.indented + .indented .activity-item {
+            border-top: 0px solid #dee2e6;
+            border-radius: unset;
+        }
+    }
 
 /* TITLES */
-  h1, .h1 {
-    font-size: 28px !important;
-    color: #999999;
-  }
-  h2, .h2 {
-    font-size: 24px !important;
-    color: #999999;
-  }
-  h3, .h3 {
-    font-size: 20px !important;
-    color: #999999;
-  }
-  h4, .h4 {
-    font-size: 16px !important;
-    color: #999999;
-  }
-  
-/* REMOVE UNNECESSARY ELEMENTS */
-  .socials-header {
-    display: none !important;
-  }
-  
-  footer, .footer {
-    display: none !important;   
-  }
+    if (titles == "Enabled"){
+        h1, .h1 {
+            font-size: 28px if smallTitles !important;
+            color: #999999 if changeTitleColor !important;
+        }
+        h2, .h2 {
+            font-size: 24px if smallTitles !important;
+            color: #999999 if changeTitleColor !important;
+        }
+        h3, .h3 {
+            font-size: 20px if smallTitles !important;
+            color: #999999 if changeTitleColor !important;
+        }
+        h4, .h4 {
+            font-size: 16px if smallTitles !important;
+            color: #999999 if changeTitleColor !important;
+        }      
+    }
 
+/* REMOVE UNNECESSARY ELEMENTS */
+    if(remItems == "Enabled"){
+        .socials-header {
+            display: none if !socialHeader !important;
+        }
+    
+        footer, .footer {
+            display: none if !showFooter !important;
+        }
+    }
 }
