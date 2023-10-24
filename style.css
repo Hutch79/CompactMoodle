@@ -11,7 +11,6 @@
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://moodle.bbbaden.ch/course/view.php") {
-  /* WHY .activityiconcontainer TWICE (HERE AND DOWN THERE) ? */
   .activityiconcontainer {
     height: 30px !important;
     width: 30px !important;
@@ -20,23 +19,11 @@
     margin-top: -20px;
     margin-bottom: -10px !important;
   }
-/* ---------------------- */
 
   .activityicon {
     height: 20px !important;
     width: 20px !important;
   }
-
-/* THIS PART EXISTS TWICE */
-  .activityiconcontainer {
-    height: 30px !important;
-    width: 30px !important;
-  }
-  .activity-item {
-    margin-top: -20px;
-    margin-bottom: -10px !important;
-  }
-/* ---------------------- */
   
 /* ICONS NEW SIZE */
   .activityicon {
