@@ -9,16 +9,16 @@
 @preprocessor   stylus
 @license        GPLv3
 
-@var select titles                "TITLE" ["Enabled", "Disabled"]
-@var checkbox smallTitles         "  💬 small Title Text" 1
-@var checkbox changeTitleColor    "  🟧 change Title color" 1
+@var select     titles              "TITLE"                     ["Enabled", "Disabled"]
+@var checkbox   smallTitles         "  💬 small Title Text"     1
+@var checkbox   changeTitleColor    "  🟧 change Title color"   1
 
-@var select remItems              "UNNECESSARY ELEMENTS" ["Enabled", "Disabled"]
-@var checkbox socialHeader        "  📗 show social Header" 0
-@var checkbox showFooter          "  🪪 Show Footer" 0
+@var select     remItems            "UNNECESSARY ELEMENTS"      ["Enabled", "Disabled"]
+@var checkbox   socialHeader        "  📗 show social Header"   0
+@var checkbox   showFooter          "  🪪 Show Footer"           0
 
-@var select icons                 "ICONS" ["Enabled", "Disabled"]
-@var checkbox smallerIcons        "  📗 small Icons" 1
+@var select icons                   "ICONS"                     ["Enabled", "Disabled"]
+@var checkbox   smallerIcons        "  📗 small Icons"          1
 
 ==/UserStyle== */
 
