@@ -12,6 +12,7 @@
 @var select     titles              "TITLE"                     ["Enabled", "Disabled"]
 @var checkbox   smallTitles         "  💬 small Title Text"     1
 @var checkbox   changeTitleColor    "  🟧 change Title color"   1
+@var color      titleColor          "  🖌️ Title color"          #999999
 
 @var select     remItems            "UNNECESSARY ELEMENTS"      ["Enabled", "Disabled"]
 @var checkbox   socialHeader        "  📗 show social Header"   0
@@ -56,20 +57,26 @@
     if (titles == "Enabled"){
         h1, .h1 {
             font-size: 28px if smallTitles !important;
-            color: #999999 if changeTitleColor !important;
+            color: titleColor if changeTitleColor !important;
         }
         h2, .h2 {
             font-size: 24px if smallTitles !important;
-            color: #999999 if changeTitleColor !important;
+            color: titleColor if changeTitleColor !important;
         }
         h3, .h3 {
             font-size: 20px if smallTitles !important;
-            color: #999999 if changeTitleColor !important;
+            color: titleColor if changeTitleColor !important;
         }
         h4, .h4 {
             font-size: 16px if smallTitles !important;
-            color: #999999 if changeTitleColor !important;
-        }      
+            color: titleColor if changeTitleColor !important;
+        }
+        h4, .h4 {
+            color: titleColor if changeTitleColor !important;
+        } 
+        h5, .h5 {
+            color: titleColor if changeTitleColor !important;
+        } 
     }
 
 /* REMOVE UNNECESSARY ELEMENTS */
