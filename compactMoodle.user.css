@@ -5,8 +5,7 @@
 @author         Hutch79 (https://github.com/Hutch79)
 @homepageURL    https://github.com/Hutch79/CompactMoodle
 @supportURL     https://github.com/Hutch79/CompactMoodle/issues
-@updateURL      https://userstyles.world/api/style/11906.user.css
-@version        1.4.2
+@version        1.4.3
 @preprocessor   stylus
 @license        GPLv3
 
@@ -24,7 +23,7 @@
 
 ==/UserStyle== */
 
-@-moz-document url-prefix("https://moodle.bbbaden.ch/course/view.php") {
+@-moz-document regexp(".*course\\/view\\.php\\?id=.*") {
     if(icons == "Enabled" && smallerIcons) {
     
         /* ICONS NEW SIZE */
