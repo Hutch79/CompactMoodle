@@ -99,7 +99,7 @@
 
     /* REMOVE UNNECESSARY ELEMENTS */
     /* can be toggled in the settings */
-    .block_html {
+    .block_html:has(ul) {
         display: none if block_link_list !important;
     }
 
