@@ -15,6 +15,7 @@
 @var color      titleColor                "  🖌️ Title color"          #999999
 
 @var select     remItems                  "Side Nav"                  ["_"]
+@var checkbox   block_administration      "  🛠️ hide administration"  0
 @var checkbox   block_course_list         "  📚 hide course list"     0
 @var checkbox   block_link_list           "  📋 hide link list"       0
 @var checkbox   block_calendar            "  📅 hide calendar"        0
@@ -26,7 +27,7 @@
 ==/UserStyle== */
 
 @-moz-document regexp(".*course\\/view\\.php\\?id=.*") {
-    if(iconSize != 50) {
+    if(iconSize != 50 && smallerIcons == 1) {
         /* 50px is the default size of the icons on moodle => no need to change it */
 
         if (disableIconBackground == 1) {
@@ -106,7 +107,25 @@
         display: none if block_course_list !important;
     }
     
+    
     .block_calendar_month {
+        /* Block named "Calendar" */
         display: none if block_calendar !important;
     }
+    .block_calendar_upcoming {
+        /* Block named "Aktuelle Termine" */
+        display: none if block_calendar !important;
+    }
+    .block_recent_activity {
+        /* Block named "Neue Aktivitäten" */
+        display: none if block_calendar !important;
+    }
+
+
+    .block_settings {
+        /* Block named "Administration" */
+        display: none if block_administration !important;
+    }
+
+    
 }
