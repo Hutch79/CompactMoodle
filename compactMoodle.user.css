@@ -15,8 +15,9 @@
 @var color      titleColor          "  🖌️ Title color"          #999999
 
 @var select     remItems            "UNNECESSARY ELEMENTS"      ["Enabled", "Disabled"]
-@var checkbox   socialHeader        "  📗 show social Header"   0
-@var checkbox   showFooter          "  🪪 Show Footer"          0
+@var checkbox   block_course_list   "  📗 hide course list"     0
+@var checkbox   block_link_list     "  📗 hide link list"       0
+@var checkbox   block_calendar      "  📗 hide calendar"        0
 
 @var select icons                   "ICONS"                     ["Enabled", "Disabled"]
 @var checkbox   smallerIcons        "  📗 small Icons"          1
@@ -81,12 +82,16 @@
 
 /* REMOVE UNNECESSARY ELEMENTS */
     if(remItems == "Enabled"){
-        .socials-header {
-            display: none if !socialHeader !important;
+        .block_html {
+            display: none if block_link_list !important;
         }
-    
-        footer, .footer {
-            display: none if !showFooter !important;
+
+        .block_course_list {
+            display: none if block_course_list !important;
+        }
+        
+        .block_calendar_month {
+            display: none if block_calendar !important;
         }
     }
 }
