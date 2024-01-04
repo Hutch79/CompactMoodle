@@ -16,7 +16,7 @@
 
 @var select     remItems            "UNNECESSARY ELEMENTS"      ["Enabled", "Disabled"]
 @var checkbox   socialHeader        "  📗 show social Header"   0
-@var checkbox   showFooter          "  🪪 Show Footer"           0
+@var checkbox   showFooter          "  🪪 Show Footer"          0
 
 @var select icons                   "ICONS"                     ["Enabled", "Disabled"]
 @var checkbox   smallerIcons        "  📗 small Icons"          1
