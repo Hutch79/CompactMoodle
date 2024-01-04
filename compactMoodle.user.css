@@ -21,14 +21,14 @@
 
 @var select     icons                   "ICONS"                 ["_"]
 @var checkbox   smallerIcons        "  📗 small Icons"          1
-@var checkbox   disableBackground   "  📗 Disable background"   0
+@var checkbox   disableIconBackground   "  📗 Disable background"   0
 @var range      iconSize            "icon size"                 [30, 20, 50, 5, "px"]
 ==/UserStyle== */
 
 @-moz-document regexp(".*course\\/view\\.php\\?id=.*") {
     if(iconSize != 50) {
         
-        if (disableBackground == 1) {
+        if (disableIconBackground == 1) {
             .activityiconcontainer .activityicon, .activityiconcontainer .icon {
                 height: (iconSize) !important;
                 width: (iconSize) !important;
