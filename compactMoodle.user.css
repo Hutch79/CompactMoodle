@@ -5,88 +5,127 @@
 @author         Hutch79 (https://github.com/Hutch79)
 @homepageURL    https://github.com/Hutch79/CompactMoodle
 @supportURL     https://github.com/Hutch79/CompactMoodle/issues
-@version        1.4.3
+@version        1.5.0
 @preprocessor   stylus
 @license        GPLv3
 
-@var select     titles              "TITLE"                     ["Enabled", "Disabled"]
-@var checkbox   smallTitles         "  💬 small Title Text"     1
-@var checkbox   changeTitleColor    "  🟧 change Title color"   1
-@var color      titleColor          "  🖌️ Title color"          #999999
+@var select     titles                    "TITLE"                     ["_"]
+@var checkbox   smallTitles               "  💬 small Title Text"     1
+@var checkbox   changeTitleColor          "  🟧 change Title color"   1
+@var color      titleColor                "  🖌️ Title color"          #999999
 
-@var select     remItems            "UNNECESSARY ELEMENTS"      ["Enabled", "Disabled"]
-@var checkbox   socialHeader        "  📗 show social Header"   0
-@var checkbox   showFooter          "  🪪 Show Footer"           0
+@var select     remItems                  "Side Nav"                  ["_"]
+@var checkbox   block_administration      "  🛠️ hide administration"  0
+@var checkbox   block_course_list         "  📚 hide course list"     0
+@var checkbox   block_link_list           "  📋 hide link list"       0
+@var checkbox   block_calendar            "  📅 hide calendar"        0
 
-@var select icons                   "ICONS"                     ["Enabled", "Disabled"]
-@var checkbox   smallerIcons        "  📗 small Icons"          1
-
+@var select     icons                     "ICONS"                 ["_"]
+@var checkbox   smallerIcons              "  📗 small Icons"          1
+@var checkbox   disableIconBackground     "  📗 Disable background"   0
+@var range      iconSize                  "icon size"                 [30, 20, 50, 5, "px"]
 ==/UserStyle== */
 
 @-moz-document regexp(".*course\\/view\\.php\\?id=.*") {
-    if(icons == "Enabled" && smallerIcons) {
-    
-        /* ICONS NEW SIZE */
-        .activityicon {
-            height: 20px !important;
-            width: 20px !important;
+    if(iconSize != 50 && smallerIcons == 1) {
+        /* 50px is the default size of the icons on moodle => no need to change it */
+
+        if (disableIconBackground == 1) {
+            .activityiconcontainer .activityicon, .activityiconcontainer .icon {
+                height: (iconSize) !important;
+                width: (iconSize) !important;
+            }
+            .activityiconcontainer.content, .activityiconcontainer.assessment, .activityiconcontainer.collaboration, .activityiconcontainer.communication {
+                height: iconSize !important;
+                width: iconSize !important;
+                background-color: #fff0
+            }
+                        
+            .activityiconcontainer.assessment .activityicon:not(.nofilter), .activityiconcontainer.assessment .icon:not(.nofilter), .activityiconcontainer.collaboration .activityicon:not(.nofilter), .activityiconcontainer.collaboration .icon:not(.nofilter), .activityiconcontainer.communication .activityicon:not(.nofilter), .activityiconcontainer.communication .icon:not(.nofilter) {
+                filter: brightness(0) invert(0.1);
+            }
         }
-        .activityiconcontainer {
-            height: 30px !important;
-            width: 30px !important;
+        else {
+            .activityiconcontainer .activityicon, .activityiconcontainer .icon {
+                height: (iconSize/1.5) !important;
+                width: (iconSize/1.5) !important;
+            }
+            .activityiconcontainer {
+                height: iconSize !important;
+                width: iconSize !important;
+            }
         }
         .activity-item {
             margin-top: -20px;
             margin-bottom: -10px !important;
         }
     
-    
-    
-    /* [BOOST THEME] SET ACTIVITY BOX PADDING */
+        /* [BOOST THEME] SET ACTIVITY BOX PADDING */
         .activity-item:not(.activityinline) {
-            border: 0px solid #dee2e6;
+            border: 0px solid #dee2e600;
             padding: 1rem;
         }
         .section .activity.indented + .indented .activity-item {
-            border-top: 0px solid #dee2e6;
+            border-top: 0px solid #dee2e600;
             border-radius: unset;
         }
     }
 
-/* TITLES */
-    if (titles == "Enabled"){
-        h1, .h1 {
-            font-size: 28px if smallTitles !important;
-            color: titleColor if changeTitleColor !important;
-        }
-        h2, .h2 {
-            font-size: 24px if smallTitles !important;
-            color: titleColor if changeTitleColor !important;
-        }
-        h3, .h3 {
-            font-size: 20px if smallTitles !important;
-            color: titleColor if changeTitleColor !important;
-        }
-        h4, .h4 {
-            font-size: 16px if smallTitles !important;
-            color: titleColor if changeTitleColor !important;
-        }
-        h4, .h4 {
-            color: titleColor if changeTitleColor !important;
-        } 
-        h5, .h5 {
-            color: titleColor if changeTitleColor !important;
-        } 
+    /* CHANGE TITLE SIZE */
+    /* change size of the title if smallTitles is checked */
+    h1, .h1 {
+        font-size: 28px if smallTitles !important;
+        color: titleColor if changeTitleColor !important;
+    }
+    h2, .h2 {
+        font-size: 24px if smallTitles !important;
+        color: titleColor if changeTitleColor !important;
+    }
+    h3, .h3 {
+        font-size: 20px if smallTitles !important;
+        color: titleColor if changeTitleColor !important;
+    }
+    h4, .h4 {
+        font-size: 16px if smallTitles !important;
+        color: titleColor if changeTitleColor !important;
+    }
+    h4, .h4 {
+        color: titleColor if changeTitleColor !important;
+    } 
+    h5, .h5 {
+        color: titleColor if changeTitleColor !important;
+    } 
+    
+
+    /* REMOVE UNNECESSARY ELEMENTS */
+    /* can be toggled in the settings */
+    .block_html:has(ul) {
+        display: none if block_link_list !important;
     }
 
-/* REMOVE UNNECESSARY ELEMENTS */
-    if(remItems == "Enabled"){
-        .socials-header {
-            display: none if !socialHeader !important;
-        }
-    
-        footer, .footer {
-            display: none if !showFooter !important;
-        }
+    .block_course_list {
+        display: none if block_course_list !important;
     }
+    
+    
+    .block_calendar_month {
+        /* Block named "Calendar" */
+        display: none if block_calendar !important;
+    }
+    .block_calendar_upcoming {
+        /* Block named "Aktuelle Termine" */
+        display: none if block_calendar !important;
+    }
+    .block_recent_activity {
+        /* Block named "Neue Aktivitäten" */
+        display: none if block_calendar !important;
+    }
+
+
+    .block_settings {
+        /* Block named "Administration" */
+        display: none if block_administration !important;
+    }
+
+    
 }
