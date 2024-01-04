@@ -20,7 +20,7 @@
 
 @var select icons                   "ICONS"                     ["Enabled", "Disabled"]
 @var checkbox   smallerIcons        "  📗 small Icons"          1
-
+@var range      iconSize            "icon size"                 [20, 20, 100, 5, "px"]
 ==/UserStyle== */
 
 @-moz-document regexp(".*course\\/view\\.php\\?id=.*") {
@@ -28,12 +28,12 @@
     
         /* ICONS NEW SIZE */
         .activityicon {
-            height: 20px !important;
-            width: 20px !important;
+            height: iconSize !important;
+            width: iconSize !important;
         }
         .activityiconcontainer {
-            height: 30px !important;
-            width: 30px !important;
+            height: iconSize + (iconSize / 2) !important;
+            width: iconSize + (iconSize / 2) !important;
         }
         .activity-item {
             margin-top: -20px;
