@@ -1,5 +1,5 @@
 # CompactMoodle
-[![Static Badge](https://img.shields.io/badge/Install-Script-green?style=for-the-badge)](https://raw.githubusercontent.com/Hutch79/CompactMoodle/main/compactMoodle.user.css)
+[![Static Badge](https://img.shields.io/badge/Install-Script-green?style=for-the-badge)](https://userstyles.world/api/style/11906.user.css)
 
 This little Stylus script makes Moodle more compact.  
 It mainly makes task symbols smaller but it also slightly tweaks headers.
